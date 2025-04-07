@@ -1,5 +1,6 @@
 # https://docs.sqlalchemy.org/en/20/orm/quickstart.html
 
+# 流石にこんなインポートは良くないよね
 from sqlalchemy import *
 from sqlalchemy.orm import *
 from datetime import datetime, timedelta
