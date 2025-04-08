@@ -24,10 +24,25 @@ class Sample(Base):
     __tablename__ = "sample"
 
     str_a: Mapped[str]
+    str_b: Mapped[str]
+
+    children: Mapped[list["SampleChild"]] = relationship()
 
     __table_args__ = {
         "comment": "sample table",
     }
+
+
+class SampleChild(Base):
+    __tablename__ = "sample_child"
+
+    str_c: Mapped[str]
+    str_d: Mapped[str]
+
+    parent_id: Mapped[int] = mapped_column(
+        ForeignKey("sample.id"), nullable=False
+    )
+
 
 # class User(Base):
 #     __tablename__ = "user_account"
@@ -60,6 +75,7 @@ if __name__ == "__main__":
     with Session(engine) as factory_session:
         sample = Sample()
         sample.str_a = "sample"
+        sample.str_b = "sample"
         factory_session.add(sample)
         factory_session.commit()
 
