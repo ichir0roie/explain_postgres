@@ -57,12 +57,12 @@ if __name__ == "__main__":
     meta = Base.metadata
     meta.create_all(engine)
 
-    with Session(engine) as session:
+    with Session(engine) as factory_session:
         sample = Sample()
         sample.str_a = "sample"
-        session.add(sample)
-        session.commit()
+        factory_session.add(sample)
+        factory_session.commit()
 
-        res = session.scalars(select(Sample)).all()
+        res = factory_session.scalars(select(Sample)).all()
         for r in res:
             print(r.__dict__)
