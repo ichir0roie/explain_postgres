@@ -5,10 +5,13 @@ from sqlalchemy import *
 from sqlalchemy.orm import *
 from datetime import datetime, timedelta
 
-engine = create_engine("postgresql://user:password@localhost:54321/db", echo=True)
+engine = create_engine(
+    "postgresql://user:password@localhost:54321/db", echo=True
+)
 
 
 class Base(DeclarativeBase):
+    __allow_unmapped__ = True
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     created_at: Mapped[datetime] = mapped_column(
         default=func.now(), nullable=False, server_default=func.now()
