@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "name": "explain_postgres_docker_postgres_db",
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "port": 54321,
+            "database": "db",
+            "username": "user",
+            "askForPassword": false,
+            "password": "password",
+            "connectionTimeout": 15
+        },
+    ],
+}
